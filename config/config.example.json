@@ -1,0 +1,25 @@
+{
+  "ollama": {
+    "baseUrl": "http://127.0.0.1:11434",
+    "defaultModel": "agent35:latest",
+    "numCtx": 8192,
+    "temperature": 0.3,
+    "keepAlive": "10m"
+  },
+  "chat": {
+    "thinking": "auto",
+    "language": "ru",
+    "systemPrompt": "Ты локальный агент-разработчик OllamaCode. Отвечай по-русски. Действия только через tools. Не утверждай успех без реального результата инструмента. Поддерживай JSON tool-calls и XML tool-tags."
+  },
+  "tools": {
+    "allowJson": true,
+    "allowXml": true,
+    "autoApproveRead": true,
+    "autoApproveWrite": false,
+    "autoApproveTerminal": false
+  },
+  "ui": {
+    "title": "OllamaCode Chat",
+    "showThinking": true
+  }
+}

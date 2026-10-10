@@ -1,0 +1,32 @@
+{
+  "providers": {
+    "openai-api": {
+      "type": "openai",
+      "name": "OpenAI API (optional cloud)",
+      "apiKey": "sk-...",
+      "models": [
+        {
+          "id": "gpt-4.1-mini",
+          "name": "GPT-4.1 Mini"
+        }
+      ]
+    },
+    "openrouter-api": {
+      "type": "openai-compatible",
+      "name": "OpenRouter API (optional cloud)",
+      "baseUrl": "https://openrouter.ai/api/v1",
+      "apiKey": "or-...",
+      "models": [
+        {
+          "id": "qwen/qwen3-coder:free",
+          "name": "Qwen3 Coder Free"
+        }
+      ]
+    }
+  },
+  "notes": [
+    "OllamaCode: локальные модели идут через Ollama (ollamacode provider), не через этот файл.",
+    "Этот файл только для сторонних облачных API (BYOK).",
+    "Путь по умолчанию: %USERPROFILE%\\.ollamacode\\chatLanguageModels.json"
+  ]
+}

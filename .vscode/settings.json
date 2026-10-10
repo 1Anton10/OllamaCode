@@ -1,0 +1,20 @@
+{
+  "ollamaCode.openChatOnStartup": true,
+  "ollamaCode.defaultModel": "agent36:latest",
+  "ollamaCode.numCtx": 200000,
+  "ollamaCode.thinking": "auto",
+  "ollamaCode.baseUrl": "http://127.0.0.1:11434",
+  "workbench.secondarySideBar.defaultVisibility": "visible",
+  "chat.agent.enabled": true,
+  "workbench.browser.enableChatTools": true,
+  "window.title": "OllamaCode ${separator}${activeEditorShort}",
+  "chat.byokUtilityModelDefault": "mainAgent",
+  "chat.utilityModel": {
+    "vendor": "ollamacode",
+    "id": "agent36:latest"
+  },
+  "chat.utilitySmallModel": {
+    "vendor": "ollamacode",
+    "id": "agent36:latest"
+  }
+}

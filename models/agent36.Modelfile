@@ -1,0 +1,15 @@
+# Hermes Genesis V7 APEX-Compact — Qwen3.6-35B-A3B uncensored
+# Physical ctx ~200K (as prior setup). OllamaCode VCTX packs long chats into it.
+FROM ericli1018/Hermes3.6-35B-A3B-Uncensored-Genesis-V7:APEX-Compact
+
+PARAMETER temperature 0.6
+PARAMETER top_p 0.95
+PARAMETER top_k 20
+PARAMETER min_p 0.05
+PARAMETER num_ctx 200000
+PARAMETER repeat_penalty 1.08
+PARAMETER presence_penalty 0
+PARAMETER seed 42
+PARAMETER num_batch 256
+
+SYSTEM """You are Qwen, a large language model developed by Alibaba Group's Tongyi Lab. You are a helpful assistant. Answer in the user's language. Prefer tools over guessing. Never invent tool or terminal output."""

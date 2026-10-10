@@ -1,0 +1,73 @@
+{
+  "chat.byokUtilityModelDefault": "mainAgent",
+  "chat.utilityModel": {
+    "vendor": "ollamacode",
+    "id": "agent36:latest"
+  },
+  "chat.utilitySmallModel": {
+    "vendor": "ollamacode",
+    "id": "agent36:latest"
+  },
+  "chat.agent.enabled": true,
+  "workbench.browser.enableChatTools": true,
+  "chat.agent.maxRequests": 50,
+  "chat.commandCenter.enabled": true,
+  "chat.titleBar.signIn.enabled": false,
+  "chat.welcomePage.signIn.enabled": false,
+  "chat.agentSessions.showExternal": "none",
+  "chat.agentHost.claudeAgent.enabled": false,
+  "chat.agentHost.codexAgent.enabled": false,
+  "chat.agentHost.githubMcpServer.enabled": false,
+  "chat.editor.localAgent.enabled": true,
+  "chat.defaultToCopilotHarness": false,
+  "chat.editor.preferCopilotHarness": false,
+  "chat.contextUsage.enabled": true,
+  "chat.editor.fontFamily": "var(--monaco-monospace-font)",
+  "terminal.integrated.initialHint": false,
+  "github.copilot.enable": {
+    "*": false,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false
+  },
+  "github.copilot.editor.enableAutoCompletions": false,
+  "github.copilot.chat.agent.enabled": false,
+  "github.copilot.chat.codesearch.enabled": false,
+  "github.copilot.chat.search.semanticText.enabled": false,
+  "github.copilot.nextEditSuggestions.enabled": false,
+  "ollamaCode.defaultModel": "agent36:latest",
+  "ollamaCode.numCtx": 200000,
+  "ollamaCode.openChatOnStartup": false,
+  "ollamaCode.openAgentOnStartup": false,
+  "ollamaCode.baseUrl": "http://127.0.0.1:11434",
+  "ollamaCode.thinking": "auto",
+  "workbench.startupEditor": "none",
+  "workbench.secondarySideBar.defaultVisibility": "hidden",
+  "workbench.sideBar.location": "left",
+  "window.title": "OllamaCode ${separator}${activeEditorShort}${separator}${rootName}",
+  "window.openFoldersInNewWindow": "off",
+  "window.restoreWindows": "one",
+  "telemetry.telemetryLevel": "off",
+  "telemetry.enableCrashReporter": false,
+  "telemetry.feedback.enabled": false,
+  "update.mode": "none",
+  "workbench.enableExperiments": false,
+  "extensions.ignoreRecommendations": true,
+  "extensions.autoUpdate": false,
+  "extensions.autoCheckUpdates": false,
+  "extensions.experimental.affinity": {},
+  "remote.autoForwardPorts": false,
+  "remote.autoForwardPortsSource": "hybrid",
+  "files.watcherExclude": {
+    "**/.cache/**": true,
+    "**/out-fast/**": true,
+    "**/out-dev/**": true,
+    "**/node_modules/**": true
+  },
+  "search.exclude": {
+    "**/.cache": true,
+    "**/out-fast": true,
+    "**/out-dev": true
+  }
+}
+

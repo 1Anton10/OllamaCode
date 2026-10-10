@@ -1,0 +1,32 @@
+# deps / build
+node_modules/
+out/
+out-dev/
+out-fast/
+.cache/
+dist/
+release/
+*.vsix
+*.log
+.DS_Store
+
+# local runtime
+.userdata/
+.userdata-oss/
+.ollamacode/
+*.gguf
+*.bin
+*.safetensors
+
+# secrets / local overrides
+.env
+.env.*
+**/credentials*.json
+**/secrets*.json
+config/chatLanguageModels.json
+
+# noise
+REPO_MAP.md
+.aider/
+*.tmp
+Thumbs.db

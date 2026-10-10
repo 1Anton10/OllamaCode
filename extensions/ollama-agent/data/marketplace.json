@@ -1,0 +1,451 @@
+{
+  "version": 3,
+  "updated": "2026-03-23",
+  "items": [
+    {
+      "id": "mcp-filesystem",
+      "kind": "mcp",
+      "name": "Filesystem",
+      "description": "Чтение и запись файлов проекта. Без него агент почти бесполезен.",
+      "source": "npm:@modelcontextprotocol/server-filesystem",
+      "region": [
+        "global"
+      ],
+      "popularity": 100,
+      "modelTags": [
+        "agent",
+        "tools",
+        "coder",
+        "qwen",
+        "general"
+      ],
+      "fit": "required",
+      "defaultInstall": true,
+      "mcp": {
+        "key": "ollamacode-filesystem",
+        "command": "npx",
+        "args": [
+          "-y",
+          "@modelcontextprotocol/server-filesystem",
+          "${workspaceFolder}"
+        ]
+      }
+    },
+    {
+      "id": "mcp-git",
+      "kind": "mcp",
+      "name": "Git",
+      "description": "status / diff / log / commit. Стабильный и безопасный для агента.",
+      "source": "npm:@modelcontextprotocol/server-git",
+      "region": [
+        "global"
+      ],
+      "popularity": 98,
+      "modelTags": [
+        "agent",
+        "tools",
+        "coder",
+        "qwen"
+      ],
+      "fit": "required",
+      "defaultInstall": true,
+      "mcp": {
+        "key": "ollamacode-git",
+        "command": "npx",
+        "args": [
+          "-y",
+          "@modelcontextprotocol/server-git",
+          "--repository",
+          "${workspaceFolder}"
+        ]
+      }
+    },
+    {
+      "id": "mcp-fetch",
+      "kind": "mcp",
+      "name": "Fetch",
+      "description": "Скачать HTML/JSON с URL (доки, API). Не открывает браузер.",
+      "source": "npm:@modelcontextprotocol/server-fetch",
+      "region": [
+        "global"
+      ],
+      "popularity": 95,
+      "modelTags": [
+        "agent",
+        "tools",
+        "qwen",
+        "research"
+      ],
+      "fit": "required",
+      "defaultInstall": true,
+      "mcp": {
+        "key": "ollamacode-fetch",
+        "command": "npx",
+        "args": [
+          "-y",
+          "@modelcontextprotocol/server-fetch"
+        ]
+      }
+    },
+    {
+      "id": "mcp-memory",
+      "kind": "mcp",
+      "name": "Memory",
+      "description": "Короткая память между сессиями. Не раздувает контекст как огромный chat history.",
+      "source": "npm:@modelcontextprotocol/server-memory",
+      "region": [
+        "global"
+      ],
+      "popularity": 88,
+      "modelTags": [
+        "agent",
+        "tools",
+        "general",
+        "qwen"
+      ],
+      "fit": "recommended",
+      "defaultInstall": true,
+      "mcp": {
+        "key": "ollamacode-memory",
+        "command": "npx",
+        "args": [
+          "-y",
+          "@modelcontextprotocol/server-memory"
+        ]
+      }
+    },
+    {
+      "id": "mcp-github",
+      "kind": "mcp",
+      "name": "GitHub",
+      "description": "Issues/PR через API. Ставь только если есть GITHUB_PERSONAL_ACCESS_TOKEN.",
+      "source": "npm:@modelcontextprotocol/server-github",
+      "region": [
+        "global"
+      ],
+      "popularity": 72,
+      "modelTags": [
+        "coder",
+        "agent",
+        "tools"
+      ],
+      "fit": "optional",
+      "needsEnv": [
+        "GITHUB_PERSONAL_ACCESS_TOKEN"
+      ],
+      "mcp": {
+        "key": "ollamacode-github",
+        "command": "npx",
+        "args": [
+          "-y",
+          "@modelcontextprotocol/server-github"
+        ],
+        "env": {
+          "GITHUB_PERSONAL_ACCESS_TOKEN": "${env:GITHUB_PERSONAL_ACCESS_TOKEN}"
+        }
+      }
+    },
+    {
+      "id": "mcp-brave-search",
+      "kind": "mcp",
+      "name": "Brave Search",
+      "description": "Веб-поиск. Нужен BRAVE_API_KEY — без ключа не ставить.",
+      "source": "npm:@modelcontextprotocol/server-brave-search",
+      "region": [
+        "global"
+      ],
+      "popularity": 60,
+      "modelTags": [
+        "research",
+        "agent",
+        "tools"
+      ],
+      "fit": "optional",
+      "needsEnv": [
+        "BRAVE_API_KEY"
+      ],
+      "mcp": {
+        "key": "ollamacode-brave",
+        "command": "npx",
+        "args": [
+          "-y",
+          "@modelcontextprotocol/server-brave-search"
+        ],
+        "env": {
+          "BRAVE_API_KEY": "${env:BRAVE_API_KEY}"
+        }
+      }
+    },
+    {
+      "id": "mcp-sequential-thinking",
+      "kind": "mcp",
+      "name": "Sequential Thinking",
+      "description": "Дублирует native thinking Qwen3/agent35 и путает tool-loop. Для этой модели — конфликт.",
+      "source": "npm:@modelcontextprotocol/server-sequential-thinking",
+      "region": [
+        "global"
+      ],
+      "popularity": 20,
+      "modelTags": [
+        "small"
+      ],
+      "excludeIfTags": [
+        "thinking",
+        "qwen3"
+      ],
+      "fit": "optional",
+      "defaultInstall": false,
+      "mcp": {
+        "key": "ollamacode-sequential-thinking",
+        "command": "npx",
+        "args": [
+          "-y",
+          "@modelcontextprotocol/server-sequential-thinking"
+        ]
+      }
+    },
+    {
+      "id": "skill-qwen-tools",
+      "kind": "skill",
+      "name": "Qwen Tool Calling",
+      "description": "Правила JSON/XML tools + anti-hallucination. Обязателен для agent35.",
+      "source": "ollamacode:builtin",
+      "region": [
+        "global",
+        "ru"
+      ],
+      "popularity": 100,
+      "modelTags": [
+        "qwen",
+        "qwen3",
+        "agent",
+        "tools",
+        "coder"
+      ],
+      "fit": "required",
+      "defaultInstall": true,
+      "install": {
+        "type": "builtin",
+        "files": [
+          {
+            "dest": "SKILL.md",
+            "content": "---\nname: qwen-tool-calling\ndescription: Qwen3/Qwen3.5 tool calling for OllamaCode agents\n---\n\n# Qwen Tool Calling\n\n- Используй только реальные результаты tools.\n- JSON: {\"name\":\"tool\",\"arguments\":{...}} или XML tags по шаблону модели.\n- Не выдумывай stdout/stderr.\n- Thinking уже в модели — не подключай Sequential Thinking MCP.\n- Один tool call за раз, потом дождись результата.\n"
+          }
+        ]
+      }
+    },
+    {
+      "id": "skill-agent-discipline",
+      "kind": "skill",
+      "name": "Agent Discipline",
+      "description": "Как не врать про файлы/терминал и когда спрашивать подтверждение.",
+      "source": "ollamacode:builtin",
+      "region": [
+        "global",
+        "ru"
+      ],
+      "popularity": 92,
+      "modelTags": [
+        "agent",
+        "tools",
+        "qwen",
+        "general"
+      ],
+      "fit": "required",
+      "defaultInstall": true,
+      "install": {
+        "type": "builtin",
+        "files": [
+          {
+            "dest": "SKILL.md",
+            "content": "---\nname: agent-discipline\ndescription: Safe local agent behavior + follow app-dev-verify pipeline\n---\n\n# Agent Discipline\n\n- Следуй пайплайну skill **app-dev-verify**: понять → read → edit → run → verify → итог.\n- Не утверждай, что файл изменён / команда прошла, пока tool не вернул успех.\n- Для деструктивных действий (rm, push --force, drop db) — спроси пользователя.\n- Читай файл перед правкой, если не уверен в содержимом.\n- Не обрывай ответ на полуслове; не крути один и тот же tool+args вхолостую.\n"
+          }
+        ]
+      }
+    },
+    {
+      "id": "skill-plan-then-act",
+      "kind": "skill",
+      "name": "Plan Then Act",
+      "description": "Короткий план → tools → проверка. Без воды и без лишних MCP.",
+      "source": "ollamacode:builtin",
+      "region": [
+        "global",
+        "ru"
+      ],
+      "popularity": 86,
+      "modelTags": [
+        "agent",
+        "tools",
+        "qwen",
+        "coder"
+      ],
+      "fit": "recommended",
+      "defaultInstall": true,
+      "install": {
+        "type": "builtin",
+        "files": [
+          {
+            "dest": "SKILL.md",
+            "content": "---\nname: plan-then-act\ndescription: Compact plan then tools — aligned with app-dev-verify pipeline\n---\n\n# Plan Then Act\n\n1. 1–3 пункта: что меняешь и как проверишь.\n2. Сразу tools по пайплайну **app-dev-verify**: read → edit → run → verify.\n3. После правок — реальная проверка (compile/test/run/UI), не выдумывай результат.\n4. Итог только после проверки; не ставь лишние MCP «на всякий случай».\n"
+          }
+        ]
+      }
+    },
+    {
+      "id": "skill-app-dev-verify",
+      "kind": "skill",
+      "name": "App Dev Verify",
+      "description": "Общий пайплайн: понять → edit → run → verify (UI по типу задачи).",
+      "source": "ollamacode:builtin",
+      "region": [
+        "global",
+        "ru"
+      ],
+      "popularity": 95,
+      "modelTags": [
+        "agent",
+        "tools",
+        "qwen",
+        "coder",
+        "general"
+      ],
+      "fit": "required",
+      "defaultInstall": true,
+      "install": {
+        "type": "builtin",
+        "files": [
+          {
+            "dest": "SKILL.md",
+            "content": "---\nname: app-dev-verify\ndescription: General agent pipeline — understand → edit via tools → run → verify. Includes windows_desktop TEXT_VISION recipe.\n---\n\n# Agent work pipeline\n\nНе объявляй «готово», пока не прошёл проверку через tools. Не выдумывай вывод терминала / UI.\n\n## 1. Понять задачу\n\n- Цель, критерии успеха, что уже есть в workspace.\n- Если неясно — один короткий вопрос; иначе сразу tools.\n\n## 2. Смотреть код\n\n- `read_file` / `grep` / `list_files` / `repo_map` — не `cat` в терминале.\n- Короткие файлы приходят целиком (EOF в hint) — **не** листай offset/limit.\n- Увидел проблему → сразу `replace_in_file` / `write_to_file`, не ещё один read.\n\n## 3. Менять\n\n- Правки только tools: `replace_in_file` / `write_to_file`.\n- Маленькие точечные diff’ы; не переписывай файл целиком без нужды.\n- Не утверждай «исправил», пока TOOL_RESULT не OK.\n\n## 4. Запускать\n\n- `run_in_terminal` с **реальной** `command` (например `python main.py`).\n- Убедись, что в файле есть точка входа (`if __name__ == \"__main__\":` / `asyncio.run(main())`) — иначе процесс сразу выходит без вывода.\n- После запуска бота `get_terminal_output` **должен** показать лог (ready/polling). Если только `PS ...>` / пусто — это FAILURE (`EMPTY_OUTPUT`), бот не жив.\n- Долгие процессы (сервер, watcher, бот) → background/async; сохрани `terminal_id`, смотри `get_terminal_output`.\n- Живой процесс **оставь в фоне**; `kill_terminal` — только сбой / рестарт / просьба пользователя.\n- Traceback / non-zero → чини код (шаг 2–3), потом тот же запуск.\n\n## 5. Проверять по типу задачи\n\n| Тип | Достаточно |\n|---|---|\n| CLI / lib / скрипт без UI | зелёный запуск / тест + реальный вывод |\n| Web UI | сервер + клики в браузере или `windows_desktop` по окну браузера |\n| Нативное окно (Tk/WPF/…) | `windows_desktop` recipe ниже |\n| Мессенджер-бот | бот в фоне + recipe ниже на клиенте Telegram/Discord |\n\n## 6. windows_desktop (TEXT_VISION)\n\nУ модели **нет** зрения. PNG от `screenshot` бесполезен. Глаза = текст TOOL_RESULT: `match`, `pick`, `elements`.\n\n### Правильный рецепт (Telegram-бот E2E)\n\n1. `windows_desktop` `{ \"action\":\"snapshot\", \"process\":\"Telegram\" }`\n2. Прочитай `match.hwnd` или первую строку `pick` с `process=Telegram`\n3. `focus` `{ \"action\":\"focus\", \"hwnd\": <число> }`\n4. `ui_tree` `{ \"action\":\"ui_tree\", \"hwnd\": <число>, \"max_depth\": 3, \"focus\": false }`\n5. По `elements` найди поле ввода / чат → `click_element` или `type` / `keys` с тем же `hwnd`\n6. Сверь ответ бота + `get_terminal_output`\n\n### Важные правила\n\n- Фильтруй по **`process=Telegram`**, не по `title=Telegram` — заголовок окна часто имя чата.\n- Если `pick: EMPTY` но `process_alive: true` / `match.on_screen=false` — окно в трее. Сделай `focus(hwnd=match.hwnd)` (restore), потом `ui_tree`. Если focus не дал foreground — `ui_tree(hwnd=...)` всё равно можно.\n- Если `process_alive: false` — клиент не запущен; скажи пользователю открыть Telegram или `launch`.\n- Если `ui_tree` / `tree_process` = OllamaCode/Cursor — **не то окно**. Заново snapshot(process=Telegram).\n- **Никогда** `close` / `%{F4}` / Alt+F4 на Telegram, Discord, браузер, OllamaCode — заблокировано и ломает ПК пользователя.\n- `keys` и `close` требуют `hwnd` или `title`/`process` (глобальный SendKeys запрещён).\n- `ui_tree` по умолчанию **не** ворует focus (`focus=false`).\n- Не кликай Close / × / «закрыть» через `click_element`.\n\n### Антипаттерны\n\n- `screenshot` «чтобы посмотреть» → бесполезно.\n- `snapshot(title=\"Telegram\")` при чате с другим title → 0 windows; используй `process`.\n- Клики по Pane/IDE после сбитого focus.\n- Объявлять E2E готовым только по «бот запущен в терминале».\n\n## 7. Итог пользователю\n\n- Что сделано, как проверил, что осталось / блокеры (честно).\n- Не обрывай мысль на полуслове; допиши ответ.\n- Не зацикливайся на одном и том же tool+args — смени подход или дай итог.\n\n## Не делать\n\n- Финал только по «запустил процесс» без проверки из таблицы выше.\n- Выдуманные `terminal_id` / результаты tools.\n- Idle-текст «сейчас запущу» без tool_calls.\n- Закрывать Telegram/Discord/браузер/IDE через `windows_desktop`.\n- Пустая `command` в `run_in_terminal`.\n"
+          }
+        ]
+      }
+    },
+    {
+      "id": "skill-agent-orchestrate",
+      "kind": "skill",
+      "name": "Agent Orchestrate",
+      "description": "Нативный runSubagent + фон/await. Thinking коротко по делу.",
+      "source": "ollamacode:builtin",
+      "region": [
+        "global",
+        "ru"
+      ],
+      "popularity": 94,
+      "modelTags": [
+        "agent",
+        "tools",
+        "qwen",
+        "coder",
+        "general"
+      ],
+      "fit": "required",
+      "defaultInstall": true,
+      "install": {
+        "type": "builtin",
+        "files": [
+          {
+            "dest": "SKILL.md",
+            "content": "---\nname: agent-orchestrate\ndescription: Subagents (bg vs wait+native plaque) + long-running terminal await pipeline + anti-loop.\n---\n\n# Agent Orchestrate\n\nТы дирижёр. Tools — единственный способ действовать.\n\n## Сабагенты\n\n| Режим | Вызов | UI | Когда |\n|-------|--------|-----|------|\n| Ждать + плашка | `run_subagent(goal, wait=true)` или `mode=implement` | VS Code Summoning | Нужен результат сейчас / «нативно» |\n| Фон | `run_subagent(goal, wait=false)` (default read) | Нет плашки, есть `id` | Параллельная работа |\n| Забрать фон | `await_subagent(id)` или `[SUBAGENT_DONE]` | — | Следующий шаг зависит от отчёта |\n\nВ `goal` пиши что **вернуть**. Отчёт → **перескажи пользователю** (субагент не пишет в этот чат).\n\n## Терминал (может крутиться бесконечно)\n\n1. `run_in_terminal` — для ботов/серверов **background**.\n2. Запомни `terminal_id` из TOOL_RESULT.\n3. `await_terminal(id, pattern, timeout_ms)` — бюджет (default 60s, **max 20min**).\n4. Исход: match/exit → читай лог; timeout → ещё ждать / другой pattern / «дальше ничего не будет»; traceback → правь код.\n5. `kill_terminal` только сбой / рестарт / просьба юзера.\n\n## Анти-луп\n\n- BLOCKED или 2× FAILED → рантайм **снимает tool со схемы** на ход. Смени тактику по ERROR.\n- Не вбивай имена tools в shell.\n- Thinking «надо X» → tool_call X, не другой tool.\n\n## Thinking\n\nКоротко: следующий tool, риск, проверка. Без эссе.\n"
+          }
+        ]
+      }
+    },
+    {
+      "id": "rule-ollama-agent",
+      "kind": "rule",
+      "name": "OllamaCode Agent",
+      "description": "Базовые правила: русский, tools-only, без фейковых действий.",
+      "source": "ollamacode:builtin",
+      "region": [
+        "global",
+        "ru"
+      ],
+      "popularity": 100,
+      "modelTags": [
+        "agent",
+        "qwen",
+        "tools",
+        "general"
+      ],
+      "fit": "required",
+      "defaultInstall": true,
+      "install": {
+        "type": "builtin",
+        "files": [
+          {
+            "dest": "ollama-agent.mdc",
+            "content": "---\ndescription: OllamaCode local agent defaults\nglobs: **/*\nalwaysApply: true\n---\n\n- Отвечай по-русски unless user writes in English.\n- Изменения кода только через tools.\n- Не утверждай успех без вывода инструмента.\n- Локальная Ollama — основной brain; облако только BYOK.\n- Не ставь MCP, которые дублируют native thinking.\n"
+          }
+        ]
+      }
+    },
+    {
+      "id": "rule-ru-coding",
+      "kind": "rule",
+      "name": "RU Coding Style",
+      "description": "Комментарии/сообщения коммитов по-русски, код — английские идентификаторы.",
+      "source": "ollamacode:builtin",
+      "region": [
+        "ru"
+      ],
+      "popularity": 80,
+      "modelTags": [
+        "agent",
+        "coder",
+        "qwen",
+        "general"
+      ],
+      "fit": "recommended",
+      "defaultInstall": true,
+      "install": {
+        "type": "builtin",
+        "files": [
+          {
+            "dest": "ru-coding.mdc",
+            "content": "---\ndescription: Russian UX, English identifiers\nglobs: **/*\nalwaysApply: true\n---\n\n- Идентификаторы кода на английском.\n- Пользовательские сообщения и commit message — по-русски, если пользователь на русском.\n- Не смешивай транслит в именах функций.\n"
+          }
+        ]
+      }
+    },
+    {
+      "id": "link-hf-models",
+      "kind": "link",
+      "name": "Hugging Face Models",
+      "description": "Каталог GGUF. В OllamaCode удобнее Ctrl+Shift+H / кнопка HF.",
+      "source": "https://huggingface.co/models",
+      "region": [
+        "global",
+        "ru"
+      ],
+      "popularity": 90,
+      "modelTags": [
+        "qwen",
+        "ml",
+        "coder"
+      ],
+      "fit": "external",
+      "url": "https://huggingface.co/models?pipeline_tag=text-generation&library=gguf&sort=downloads"
+    },
+    {
+      "id": "link-ollama-library",
+      "kind": "link",
+      "name": "Ollama Library",
+      "description": "Официальные теги ollama pull (llama, qwen, …).",
+      "source": "https://ollama.com/library",
+      "region": [
+        "global",
+        "ru"
+      ],
+      "popularity": 85,
+      "modelTags": [
+        "agent",
+        "general",
+        "qwen"
+      ],
+      "fit": "external",
+      "url": "https://ollama.com/library"
+    }
+  ]
+}

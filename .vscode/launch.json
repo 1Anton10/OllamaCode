@@ -1,0 +1,14 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "OllamaCode OSS (standalone)",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "${workspaceFolder}/scripts/launch.ps1",
+      "runtimeArgs": [],
+      "console": "integratedTerminal",
+      "preLaunchTask": null
+    }
+  ]
+}

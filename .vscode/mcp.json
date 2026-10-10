@@ -1,0 +1,35 @@
+{
+  "mcpServers": {
+    "ollamacode-filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "e:\\Work\\OllamaCode"
+      ]
+    },
+    "ollamacode-git": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-git",
+        "--repository",
+        "e:\\Work\\OllamaCode"
+      ]
+    },
+    "ollamacode-fetch": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-fetch"
+      ]
+    },
+    "ollamacode-memory": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-memory"
+      ]
+    }
+  }
+}

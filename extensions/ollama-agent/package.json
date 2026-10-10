@@ -1,0 +1,825 @@
+{
+  "name": "ollama-agent",
+  "displayName": "OllamaCode",
+  "description": "Native right-side VS Code Chat powered by Ollama (models, agent tools, thinking auto)",
+  "version": "0.8.35",
+  "publisher": "ollamacode",
+  "icon": "media/icon.png",
+  "engines": {
+    "vscode": "^1.140.0"
+  },
+  "enabledApiProposals": [
+    "chatParticipantPrivate",
+    "defaultChatParticipant",
+    "chatProvider",
+    "chatParticipantAdditions",
+    "chatPromptFiles",
+    "contribSourceControlInputBoxMenu",
+    "chatReferenceDiagnostic",
+    "chatReferenceBinaryData",
+    "interactive"
+  ],
+  "categories": [
+    "AI",
+    "Chat"
+  ],
+  "activationEvents": [
+    "onStartupFinished",
+    "onLanguageModelChat:ollamacode",
+    "onChatParticipant:ollamacode.agent",
+    "onCommand:ollamaCode.openChat",
+    "onCommand:ollamaCode.openAgent",
+    "onCommand:ollamaCode.openSkillsHub",
+    "onCommand:ollamaCode.pullHfModel",
+    "onCommand:ollamaCode.manageModels",
+    "onCommand:ollamaCode.setupOllama",
+    "onCommand:ollamaCode.generateCommitMessage",
+    "onCommand:ollamaCode.e2eSmoke",
+    "onView:ollamaCode.skillsHub"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "authentication": [
+      {
+        "id": "ollamacode",
+        "label": "OllamaCode Local"
+      }
+    ],
+    "languageModelChatProviders": [
+      {
+        "vendor": "ollamacode",
+        "displayName": "Ollama",
+        "managementCommand": "ollamaCode.manageModels"
+      }
+    ],
+    "chatParticipants": [
+      {
+        "id": "ollamacode.agent",
+        "fullName": "Ollama Agent",
+        "name": "agent",
+        "description": "Локальный агент Ollama (tools, thinking)",
+        "isSticky": true,
+        "isDefault": true,
+        "isAgent": true,
+        "modes": [
+          "ask",
+          "edit",
+          "agent"
+        ],
+        "locations": [
+          "panel",
+          "terminal",
+          "notebook",
+          "editor"
+        ],
+        "commands": [
+          {
+            "name": "fix",
+            "description": "Починить код с tools"
+          },
+          {
+            "name": "explain",
+            "description": "Объяснить код"
+          },
+          {
+            "name": "build",
+            "description": "Собрать/реализовать задачу через tools"
+          }
+        ]
+      }
+    ],
+    "commands": [
+      {
+        "command": "ollamaCode.openChat",
+        "title": "OllamaCode: Open Right Chat (Agent)",
+        "icon": "$(comment-discussion)"
+      },
+      {
+        "command": "ollamaCode.openAgent",
+        "title": "OllamaCode: Open Agent Mode",
+        "icon": "$(robot)"
+      },
+      {
+        "command": "ollamaCode.openFolderNewWindow",
+        "title": "OllamaCode: Open Folder in New Window…",
+        "icon": "$(folder-opened)"
+      },
+      {
+        "command": "ollamaCode.refreshModels",
+        "title": "OllamaCode: Refresh Ollama Models"
+      },
+      {
+        "command": "ollamaCode.manageProvider",
+        "title": "OllamaCode: Manage Ollama Provider"
+      },
+      {
+        "command": "ollamaCode.manageModels",
+        "title": "OllamaCode: Add / Download Models",
+        "icon": "$(cloud-download)"
+      },
+      {
+        "command": "ollamaCode.setupOllama",
+        "title": "OllamaCode: Install Ollama / Starter Models",
+        "icon": "$(desktop-download)"
+      },
+      {
+        "command": "ollamaCode.generateCommitMessage",
+        "title": "OllamaCode: Generate Commit Message",
+        "icon": "$(sparkle)"
+      },
+      {
+        "command": "ollamaCode.editModelSettings",
+        "title": "OllamaCode: Edit Model Settings (system prompt, contextРІР‚В¦)",
+        "icon": "$(gear)"
+      },
+      {
+        "command": "ollamaCode.openExternalConfig",
+        "title": "OllamaCode: Open External Config"
+      },
+      {
+        "command": "ollamaCode.pullHfModel",
+        "title": "OllamaCode: Browse Hugging Face Models",
+        "icon": "$(cloud-download)"
+      },
+      {
+        "command": "ollamaCode.verifyStack",
+        "title": "OllamaCode: Verify Ollama Chat Stack"
+      },
+      {
+        "command": "ollamaCode.e2eSmoke",
+        "title": "OllamaCode: Run E2E Smoke (chat + tools)"
+      },
+      {
+        "command": "ollamaCode.openApiModelsConfig",
+        "title": "OllamaCode: Open Cloud API Models Config"
+      },
+      {
+        "command": "ollamaCode.applyOllamaOnlyPolicy",
+        "title": "OllamaCode: Apply Ollama-Only Chat Policy"
+      },
+      {
+        "command": "ollamaCode.openSkillsHub",
+        "title": "OllamaCode: Open Skills & MCP Hub",
+        "icon": "$(package)"
+      },
+      {
+        "command": "ollamaCode.refreshSkillsHub",
+        "title": "OllamaCode: Refresh Skills Hub",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "ollamaCode.openMcpConfig",
+        "title": "OllamaCode: Open MCP Config"
+      },
+      {
+        "command": "ollamaCode.dev.reload",
+        "title": "OllamaCode: Reload Window"
+      },
+      {
+        "command": "ollamaCode.increaseContext",
+        "title": "OllamaCode: Increase Context Window"
+      },
+      {
+        "command": "ollamaCode.terminalNodeVersion",
+        "title": "OllamaCode: Terminal Node Version",
+        "icon": {
+          "light": "media/node.svg",
+          "dark": "media/node.svg"
+        }
+      },
+      {
+        "command": "ollamaCode.terminalNodeNew",
+        "title": "OllamaCode: New Terminal with Node Version",
+        "icon": "$(add)"
+      },
+      {
+        "command": "ollamaCode.vramMenu",
+        "title": "OllamaCode: VRAM Menu (unload / switch)",
+        "icon": "$(server)"
+      },
+      {
+        "command": "ollamaCode.switchModel",
+        "title": "OllamaCode: Switch Model (VRAM unload→load)",
+        "icon": "$(server)"
+      },
+      {
+        "command": "ollamaCode.showVram",
+        "title": "OllamaCode: Refresh VRAM Models"
+      },
+      {
+        "command": "ollamaCode.unloadModel",
+        "title": "OllamaCode: Unload Current Model from VRAM",
+        "icon": "$(trash)"
+      },
+      {
+        "command": "ollamaCode.accounts.menu",
+        "title": "OllamaCode: Local Accounts",
+        "icon": "$(account)"
+      },
+      {
+        "command": "ollamaCode.accounts.switch",
+        "title": "OllamaCode: Switch Local Account"
+      },
+      {
+        "command": "ollamaCode.accounts.create",
+        "title": "OllamaCode: Create Local Account"
+      },
+      {
+        "command": "ollamaCode.accounts.showData",
+        "title": "OllamaCode: Show Active Account Data"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "ollamacode-hub",
+          "title": "OllamaCode Hub",
+          "icon": "media/activity-icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "ollamacode-hub": [
+        {
+          "type": "webview",
+          "id": "ollamaCode.skillsHub",
+          "name": "Skills & MCP",
+          "icon": "media/activity-icon.svg"
+        }
+      ]
+    },
+    "configurationDefaults": {
+      "chat.byokUtilityModelDefault": "mainAgent",
+      "chat.agent.enabled": true,
+      "chat.unifiedChatView": true,
+      "chat.setupFromDialog": false,
+      "workbench.browser.enableChatTools": true
+    },
+    "languageModelTools": [
+      {
+        "name": "write_to_file",
+        "displayName": "Write file",
+        "modelDescription": "Create or overwrite a file in the workspace",
+        "toolReferenceName": "write_to_file",
+        "canBeReferencedInPrompt": true,
+        "icon": "$(file)",
+        "tags": [
+          "ollamacode",
+          "filesystem"
+        ],
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string",
+              "description": "File path"
+            },
+            "content": {
+              "type": "string",
+              "description": "File contents"
+            }
+          },
+          "required": [
+            "path",
+            "content"
+          ]
+        }
+      },
+      {
+        "name": "replace_in_file",
+        "displayName": "Edit file",
+        "modelDescription": "Replace exact text in a file",
+        "toolReferenceName": "replace_in_file",
+        "canBeReferencedInPrompt": true,
+        "icon": "$(edit)",
+        "tags": [
+          "ollamacode",
+          "filesystem"
+        ],
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string"
+            },
+            "old_string": {
+              "type": "string"
+            },
+            "new_string": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "path",
+            "old_string",
+            "new_string"
+          ]
+        }
+      },
+      {
+        "name": "execute_command",
+        "displayName": "Run command",
+        "modelDescription": "Run a shell command in the workspace AI terminal",
+        "toolReferenceName": "execute_command",
+        "canBeReferencedInPrompt": true,
+        "icon": "$(terminal)",
+        "tags": [
+          "ollamacode",
+          "terminal"
+        ],
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "command": {
+              "type": "string"
+            },
+            "new_tab": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "command"
+          ]
+        }
+      },
+      {
+        "name": "windows_desktop",
+        "displayName": "Windows desktop UI",
+        "modelDescription": "Native Windows desktop for ANY app. Start with snapshot/list_windows and read TOOL_RESULT detail JSON. Then focus, ui_tree/find, click/type. screenshot saves PNG path only (no vision). max_depth 1..6.",
+        "toolReferenceName": "windows_desktop",
+        "canBeReferencedInPrompt": true,
+        "icon": "$(device-desktop)",
+        "tags": [
+          "ollamacode",
+          "windows",
+          "ui"
+        ],
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "description": "snapshot|list_windows|foreground|focus|minimize|maximize|close|launch|click|double_click|move|scroll|type|keys|find|click_element|set_value|ui_tree|screenshot|clipboard_get|clipboard_set|wait"
+            },
+            "target": {
+              "type": "string",
+              "description": "launch path or URI (https://, ms-settings:, app protocol…)"
+            },
+            "title": {
+              "type": "string"
+            },
+            "process": {
+              "type": "string"
+            },
+            "hwnd": {
+              "type": "number"
+            },
+            "x": {
+              "type": "number"
+            },
+            "y": {
+              "type": "number"
+            },
+            "relative": {
+              "type": "boolean"
+            },
+            "button": {
+              "type": "string"
+            },
+            "clicks": {
+              "type": "number"
+            },
+            "delta": {
+              "type": "number"
+            },
+            "text": {
+              "type": "string"
+            },
+            "keys": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string",
+              "description": "UI element name (substring OK)"
+            },
+            "automation_id": {
+              "type": "string"
+            },
+            "control_type": {
+              "type": "string"
+            },
+            "path": {
+              "type": "string"
+            },
+            "window_only": {
+              "type": "boolean"
+            },
+            "on_screen_only": {
+              "type": "boolean"
+            },
+            "focus": {
+              "type": "boolean"
+            },
+            "max_depth": {
+              "type": "number"
+            },
+            "ms": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "action"
+          ]
+        }
+      },
+      {
+        "name": "web_search",
+        "displayName": "Web search",
+        "modelDescription": "Search the public web for up-to-date facts. Returns titles, URLs, and snippets. Use native fetch/browser tools to read a chosen URL — do not invent page content.",
+        "toolReferenceName": "web_search",
+        "canBeReferencedInPrompt": true,
+        "icon": "$(search)",
+        "tags": [
+          "ollamacode",
+          "web"
+        ],
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "Search query (specific; include versions/dates when relevant)"
+            },
+            "search_term": {
+              "type": "string",
+              "description": "Alias of query (Astra/Cursor style)"
+            },
+            "max_results": {
+              "type": "number",
+              "description": "1–10, default 5"
+            }
+          }
+        }
+      },
+      {
+        "name": "await_terminal",
+        "displayName": "Await terminal",
+        "modelDescription": "Poll a background terminal until output matches a regex, the process ends, or timeout. Pass the exact terminal_id UUID from run_in_terminal.",
+        "toolReferenceName": "await_terminal",
+        "canBeReferencedInPrompt": true,
+        "icon": "$(watch)",
+        "tags": [
+          "ollamacode",
+          "terminal"
+        ],
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "terminal_id UUID from run_in_terminal"
+            },
+            "terminal_id": {
+              "type": "string",
+              "description": "Alias of id"
+            },
+            "pattern": {
+              "type": "string",
+              "description": "JS regex to match in terminal output (optional)"
+            },
+            "timeout_ms": {
+              "type": "number",
+              "description": "Max wait ms (default 30000, max 120000)"
+            }
+          }
+        }
+      },
+      {
+        "name": "delete_file",
+        "displayName": "Delete file",
+        "modelDescription": "Delete a file (moves to trash when the OS supports it).",
+        "toolReferenceName": "delete_file",
+        "canBeReferencedInPrompt": true,
+        "icon": "$(trash)",
+        "tags": [
+          "ollamacode",
+          "filesystem"
+        ],
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string",
+              "description": "File path to delete"
+            }
+          },
+          "required": [
+            "path"
+          ]
+        }
+      }
+    ],
+    "terminal": {
+      "profiles": [
+        {
+          "id": "ollamacode.node.picker",
+          "title": "Node (версия…)",
+          "icon": "server-process"
+        }
+      ]
+    },
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "ollamaCode.pullHfModel"
+        }
+      ],
+      "scm/inputBox": [
+        {
+          "command": "ollamaCode.generateCommitMessage",
+          "when": "scmProvider == git",
+          "group": "inline@1"
+        }
+      ],
+      "view/title": [
+        {
+          "command": "ollamaCode.refreshSkillsHub",
+          "when": "view == ollamaCode.skillsHub",
+          "group": "navigation"
+        },
+        {
+          "command": "ollamaCode.terminalNodeVersion",
+          "when": "view == terminal",
+          "group": "navigation",
+          "order": 1
+        }
+      ],
+      "terminal/title/context": [
+        {
+          "command": "ollamaCode.terminalNodeVersion",
+          "group": "7_configure"
+        },
+        {
+          "command": "ollamaCode.terminalNodeNew",
+          "group": "1_create"
+        }
+      ],
+      "chat/title": [
+        {
+          "command": "ollamaCode.manageModels",
+          "group": "navigation",
+          "order": 1
+        },
+        {
+          "command": "ollamaCode.pullHfModel",
+          "group": "navigation",
+          "order": 2
+        },
+        {
+          "command": "ollamaCode.refreshModels",
+          "group": "navigation",
+          "order": 3
+        }
+      ],
+      "chat/modelPicker": [
+        {
+          "command": "ollamaCode.pullHfModel",
+          "group": "ollamacode_hf@1"
+        },
+        {
+          "command": "ollamaCode.refreshModels",
+          "group": "ollamacode_hf@2"
+        },
+        {
+          "command": "ollamaCode.manageModels",
+          "group": "ollamacode_hf@3"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "ollamaCode.openChat",
+        "key": "ctrl+r",
+        "mac": "cmd+r",
+        "when": "!terminalFocus"
+      },
+      {
+        "command": "ollamaCode.openChat",
+        "key": "ctrl+l",
+        "mac": "cmd+l",
+        "when": "!terminalFocus"
+      },
+      {
+        "command": "ollamaCode.openAgent",
+        "key": "ctrl+shift+l",
+        "mac": "cmd+shift+l"
+      },
+      {
+        "command": "ollamaCode.pullHfModel",
+        "key": "ctrl+shift+h",
+        "mac": "cmd+shift+h"
+      }
+    ],
+    "configuration": {
+      "title": "OllamaCode",
+      "properties": {
+        "ollamaCode.baseUrl": {
+          "type": "string",
+          "default": "http://127.0.0.1:11434"
+        },
+        "ollamaCode.defaultModel": {
+          "type": "string",
+          "default": "agent36:latest"
+        },
+        "ollamaCode.thinking": {
+          "type": "string",
+          "enum": [
+            "auto",
+            "on",
+            "off"
+          ],
+          "default": "auto",
+          "description": "auto Р Р†РЎвЂ№Р С”Р В»РЎР‹РЎвЂЎР В°Р ВµРЎвЂљ thinking, Р ВµРЎРѓР В»Р С‘ Р СР С•Р Т‘Р ВµР В»РЎРЉ Р Р…Р Вµ РЎС“Р СР ВµР ВµРЎвЂљ РЎР‚Р В°РЎРѓРЎРѓРЎС“Р В¶Р Т‘Р В°РЎвЂљРЎРЉ"
+        },
+        "ollamaCode.numCtx": {
+          "type": "number",
+          "default": 16384,
+          "description": "Physical Ollama num_ctx. Prefer raising this over stripping tools; use Model Settings / virtualCtx for larger virtual windows."
+        },
+        "ollamaCode.temperature": {
+          "type": "number",
+          "default": 0.3
+        },
+        "ollamaCode.autoApproveRead": {
+          "type": "boolean",
+          "default": true,
+          "description": "Always allow read tools without prompting"
+        },
+        "ollamaCode.agentMaxSteps": {
+          "type": "number",
+          "default": 0,
+          "minimum": 0,
+          "description": "Max agent tool rounds per turn. 0 = no ceiling."
+        },
+        "ollamaCode.preferNativeSubagent": {
+          "type": "boolean",
+          "default": true,
+          "description": "When true, run_subagent prefers VS Code Built-In runSubagent (nested Agent copy, UI «Summoning Clippy») and falls back to the local Ollama pool if empty/failed. Set false to skip native and use local only."
+        },
+        "ollamaCode.autoApproveWrite": {
+          "type": "boolean",
+          "default": false,
+          "description": "Always allow write/edit tools (Always Allow)"
+        },
+        "ollamaCode.autoApproveTerminal": {
+          "type": "boolean",
+          "default": false,
+          "description": "Always allow terminal commands (Always Allow)"
+        },
+        "ollamaCode.openChatOnStartup": {
+          "type": "boolean",
+          "default": false,
+          "description": "Open Ollama chat on startup (slows first paint — off by default)"
+        },
+        "ollamaCode.openAgentOnStartup": {
+          "type": "boolean",
+          "default": false,
+          "description": "Open Agent chat on startup (slows first paint — off by default)"
+        },
+        "ollamaCode.externalConfigPath": {
+          "type": "string",
+          "default": ""
+        },
+        "ollamaCode.skillSources": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "anthropics/skills:skills"
+          ],
+          "description": "GitHub/HF sources for Agent Skills. Format: owner/repo, owner/repo:subdir, or hf:org/name"
+        },
+        "ollamaCode.ruleSources": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [],
+          "description": "GitHub/HF sources for Rules (.mdc). Format: owner/repo or owner/repo:subdir"
+        },
+        "ollamaCode.mcpSources": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "modelcontextprotocol/servers:src"
+          ],
+          "description": "GitHub sources listing MCP server folders (installed via npx or git)"
+        },
+        "ollamaCode.hfPackSources": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [],
+          "description": "Hugging Face dataset/model repos with skills/rules packs. Format: org/name or org/name:subdir"
+        },
+        "ollamaCode.githubToken": {
+          "type": "string",
+          "default": "",
+          "description": "Optional GitHub token (or env GITHUB_TOKEN) for higher API rate limits"
+        },
+        "ollamaCode.hfToken": {
+          "type": "string",
+          "default": "",
+          "description": "Optional Hugging Face token (or env HF_TOKEN) for private pack repos"
+        },
+        "ollamaCode.models": {
+          "type": "object",
+          "default": {},
+          "description": "Per-model overrides incl. numGpu/numThread/sampling",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "systemPrompt": {
+                "type": "string"
+              },
+              "temperature": {
+                "type": "number"
+              },
+              "numCtx": {
+                "type": "number",
+                "description": "Physical Ollama context window (KV in VRAM)"
+              },
+              "virtualCtx": {
+                "type": "number",
+                "description": "Virtual/chunked context target (digest + retrieval), e.g. 32768"
+              },
+              "chunkedContext": {
+                "type": "boolean",
+                "description": "Pack long chats into numCtx via rolling digest + retrieved chunks"
+              },
+              "hardwareProfile": {
+                "type": "string",
+                "enum": [
+                  "light",
+                  "medium",
+                  "max"
+                ],
+                "description": "Light=RAM/CPU+mmap, Medium=GPU+RAM, Max=all GPU"
+              },
+              "thinking": {
+                "type": "string",
+                "enum": [
+                  "auto",
+                  "on",
+                  "off"
+                ]
+              },
+              "keepAlive": {
+                "type": "string"
+              },
+              "numGpu": {
+                "type": "number"
+              },
+              "numThread": {
+                "type": "number"
+              },
+              "numBatch": {
+                "type": "number"
+              },
+              "numPredict": {
+                "type": "number"
+              },
+              "topP": {
+                "type": "number"
+              },
+              "topK": {
+                "type": "number"
+              },
+              "repeatPenalty": {
+                "type": "number"
+              },
+              "seed": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./ && node ../../scripts/sync-ollama-agent.mjs",
+    "watch": "tsc -watch -p ./",
+    "sync": "node ../../scripts/sync-ollama-agent.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.140.0",
+    "typescript": "^5.4.0"
+  }
+}

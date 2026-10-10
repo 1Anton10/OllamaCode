@@ -1,0 +1,115 @@
+{
+  "nameShort": "OllamaCode",
+  "nameLong": "OllamaCode",
+  "applicationName": "ollamacode",
+  "dataFolderName": ".ollamacode-oss",
+  "win32MutexName": "ollamacode",
+  "licenseName": "MIT",
+  "licenseUrl": "https://opensource.org/licenses/MIT",
+  "serverLicenseUrl": "https://opensource.org/licenses/MIT",
+  "serverGreeting": [],
+  "serverLicense": [],
+  "serverLicensePrompt": "",
+  "serverApplicationName": "ollamacode-server",
+  "serverDataFolderName": ".ollamacode-server",
+  "tunnelApplicationName": "ollamacode-tunnel",
+  "win32DirName": "OllamaCode",
+  "win32NameVersion": "OllamaCode",
+  "win32RegValueName": "OllamaCode",
+  "win32AppId": "{{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}",
+  "win32x64AppId": "{{A1B2C3D4-E5F6-7890-ABCD-EF1234567891}",
+  "win32arm64AppId": "{{A1B2C3D4-E5F6-7890-ABCD-EF1234567892}",
+  "win32x64UserAppId": "{{A1B2C3D4-E5F6-7890-ABCD-EF1234567893}",
+  "win32arm64UserAppId": "{{A1B2C3D4-E5F6-7890-ABCD-EF1234567894}",
+  "win32AppUserModelId": "OllamaCode.App",
+  "win32ShellNameShort": "OllamaCode",
+  "win32TunnelServiceMutex": "ollamacode-tunnelservice",
+  "win32TunnelMutex": "ollamacode-tunnel",
+  "darwinBundleIdentifier": "com.ollamacode.app",
+  "linuxIconName": "ollamacode",
+  "urlProtocol": "ollamacode",
+  "reportIssueUrl": "https://github.com/ollamacode/ollamacode/issues",
+  "nodejsRepository": "https://nodejs.org",
+  "enableTelemetry": false,
+  "aiConfig": {
+    "ariaKey": ""
+  },
+  "voiceWsUrl": "",
+  "agentsTelemetryAppName": "",
+  "npsSurveyUrl": "",
+  "surveys": [],
+  "extensionsGallery": {
+    "serviceUrl": "https://open-vsx.org/vscode/gallery",
+    "itemUrl": "https://open-vsx.org/vscode/item",
+    "resourceUrlTemplate": "https://open-vsx.org/vscode/unpkg/{publisher}/{name}/{version}/{path}"
+  },
+  "extensionEnabledApiProposals": {
+        "ollamacode.ollama-agent": [
+          "chatParticipantPrivate",
+          "defaultChatParticipant",
+          "chatProvider",
+          "chatParticipantAdditions",
+          "chatPromptFiles",
+          "contribSourceControlInputBoxMenu",
+          "chatReferenceDiagnostic",
+          "chatReferenceBinaryData"
+        ]
+  },
+  "defaultChatAgent": {
+    "extensionId": "ollamacode.ollama-agent",
+    "chatExtensionId": "ollamacode.ollama-agent",
+    "chatExtensionOutputId": "ollamacode.ollama-agent.OllamaCode.log",
+    "documentationUrl": "https://github.com/ollamacode/ollamacode",
+    "termsStatementUrl": "https://github.com/ollamacode/ollamacode",
+    "privacyStatementUrl": "https://github.com/ollamacode/ollamacode",
+    "skusDocumentationUrl": "https://github.com/ollamacode/ollamacode",
+    "optimizeUsageDocumentationUrl": "https://github.com/ollamacode/ollamacode",
+    "publicCodeMatchesUrl": "https://github.com/ollamacode/ollamacode",
+    "managePlanUrl": "https://github.com/ollamacode/ollamacode",
+    "upgradePlanUrl": "https://github.com/ollamacode/ollamacode",
+    "signUpUrl": "https://github.com/ollamacode/ollamacode",
+    "provider": {
+      "default": {
+        "id": "ollamacode",
+        "name": "OllamaCode"
+      },
+      "enterprise": {
+        "id": "ollamacode-enterprise",
+        "name": "OllamaCode"
+      },
+      "google": {
+        "id": "ollamacode",
+        "name": "OllamaCode"
+      },
+      "apple": {
+        "id": "ollamacode",
+        "name": "OllamaCode"
+      },
+      "microsoft": {
+        "id": "ollamacode",
+        "name": "OllamaCode"
+      }
+    },
+    "providerExtensionId": "ollamacode.ollama-agent",
+    "providerUriSetting": "ollamaCode.baseUrl",
+    "providerScopes": [["ollamacode"]],
+    "completionsAdvancedSetting": "ollamaCode.completions.advanced",
+    "completionsMenuCommand": "ollamaCode.showVram",
+    "completionsEnablementSetting": "ollamaCode.completions.enable",
+    "nextEditSuggestionsSetting": "ollamaCode.nextEditSuggestions.enabled",
+    "chatRefreshTokenCommand": "ollamaCode.refreshModels",
+    "walkthroughCommand": "ollamaCode.openChat",
+    "generateCommitMessageCommand": "ollamaCode.generateCommitMessage"
+  },
+  "linkProtectionTrustedDomains": [
+    "https://huggingface.co",
+    "https://ollama.com",
+    "https://open-vsx.org"
+  ],
+  "trustedExtensionAuthAccess": {
+    "microsoft": [
+      "vscode.github-authentication"
+    ]
+  },
+  "builtInExtensionsEnabledWithAutoUpdates": []
+}
